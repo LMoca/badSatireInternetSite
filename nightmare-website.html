@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="welcome to site">
+    <meta name="keywords" content="synergy, pizza, quantum computing, astrology, baseball stats, blockchain, lasagna, meditation, stock tips">
+    <title>Welcome To The Portal :: Official Site</title>
+    <style>
+        body {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAPElEQVQYV2NkYGD4z8DAwMgABXwMDAxMDKgAE1QhsgKYQphCFAXICmEK0RWiKIQpRFOIVAgT+M8ABQCvvQYBjRSWFQAAAABJRU5ErkJggg==');
+            background-color: #008080;
+            font-family: 'Comic Sans MS', cursive;
+            margin: 0;
+            padding: 0;
+            color: #FFFF00;
+            overflow-x: hidden;
+        }
+        
+        .satisfaction-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #C0C0C0;
+            border: 3px outset #FFFFFF;
+            padding: 20px;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.8);
+            z-index: 9999;
+            display: none;
+            min-width: 350px;
+        }
+        
+        .satisfaction-popup.show {
+            display: block;
+            animation: shake 0.5s;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            25% { transform: translate(-50%, -50%) rotate(-5deg); }
+            75% { transform: translate(-50%, -50%) rotate(5deg); }
+        }
+        
+        .container {
+            display: table;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            display: table-cell;
+            width: 200px;
+            background: linear-gradient(45deg, #FF00FF, #00FFFF, #FF00FF);
+            border-right: 5px ridge #FFD700;
+            vertical-align: top;
+            padding: 10px;
+            box-shadow: inset -3px -3px 10px rgba(0,0,0,0.5);
+            transform: rotate(-2deg);
+            position: relative;
+            left: -10px;
+        }
+        
+        .main-content {
+            display: table-cell;
+            vertical-align: top;
+            padding: 20px;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAQElEQVQ4T2NkYGD4z0A9wEhVwyhgjKqGDTCMqob1QGRkZPzPQAqYNAxgpLKGUQ0bQBhVzahqhqBqGP6TUQEA5xAFFdB1GlEAAAAASUVORK5CYII=');
+            transform: rotate(0.5deg);
+        }
+        
+        .tilted-section {
+            transform: rotate(-1deg);
+            margin: 20px -10px;
+        }
+        
+        .tilted-other-way {
+            transform: rotate(1.5deg);
+            margin: 30px -5px;
+        }
+        
+        .way-off {
+            transform: rotate(-3deg) translateX(20px);
+            margin: 25px 0;
+        }
+        
+        .nav-button {
+            background: linear-gradient(180deg, #C0C0C0 0%, #808080 100%);
+            border: 3px outset #FFFFFF;
+            padding: 8px 15px;
+            margin: 8px 0;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: #000000;
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 3px 3px 5px rgba(0,0,0,0.7);
+        }
+        
+        .nav-button:active {
+            border-style: inset;
+        }
+        
+        h1 {
+            font-family: 'Impact', fantasy;
+            color: #FF0000;
+            text-shadow: 3px 3px #00FF00, 5px 5px #0000FF;
+            font-size: 48px;
+            text-align: center;
+            animation: rainbow 3s infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { color: #FF0000; }
+            20% { color: #FF00FF; }
+            40% { color: #0000FF; }
+            60% { color: #00FF00; }
+            80% { color: #FFFF00; }
+            100% { color: #FF0000; }
+        }
+        
+        h2 {
+            font-family: 'Papyrus', fantasy;
+            color: #00FFFF;
+            background: #800080;
+            padding: 10px;
+            border: 5px double #FFD700;
+        }
+        
+        h3 {
+            font-family: 'Courier New', monospace;
+            color: #ADFF2F;
+            font-size: 24px;
+        }
+        
+        h4 {
+            font-family: 'Brush Script MT', cursive;
+            color: #FFA500;
+            font-size: 28px;
+        }
+        
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        
+        .marquee {
+            background: #000000;
+            color: #00FF00;
+            padding: 10px;
+            border: 3px solid #FF00FF;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .marquee-text {
+            display: inline-block;
+            animation: scroll-left 15s linear infinite;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .content-box {
+            background: rgba(255, 255, 255, 0.2);
+            border: 5px ridge #FFD700;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.5);
+        }
+        
+        .content-box:nth-child(odd) {
+            margin-left: 30px;
+        }
+        
+        .content-box:nth-child(even) {
+            margin-right: 40px;
+        }
+        
+        .content-box:nth-child(3) {
+            transform: rotate(-1.5deg);
+        }
+        
+        .content-box:nth-child(5) {
+            transform: rotate(2deg);
+            margin-left: -20px;
+        }
+        
+        .testimonial {
+            background: #FFFACD;
+            border: 3px dashed #FF1493;
+            padding: 15px;
+            margin: 15px 0;
+            color: #000000;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        .star-rating {
+            color: #FFD700;
+            font-size: 20px;
+        }
+        
+        .cta-button {
+            background: radial-gradient(circle, #FF0000, #8B0000);
+            color: #FFFFFF;
+            padding: 15px 30px;
+            border: 5px outset #FFD700;
+            font-size: 20px;
+            font-family: 'Impact', fantasy;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .footer {
+            background: #000000;
+            color: #C0C0C0;
+            padding: 20px;
+            border-top: 5px double #FFD700;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        
+        .footer a {
+            color: #00FF00;
+            text-decoration: none;
+        }
+        
+        .gif-container {
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        hr {
+            border: none;
+            height: 20px;
+            background: linear-gradient(90deg, transparent, #FF00FF, transparent);
+            margin: 20px 0;
+        }
+        
+        .counter {
+            background: #000000;
+            color: #00FF00;
+            padding: 5px 10px;
+            border: 2px solid #00FF00;
+            font-family: 'Courier New', monospace;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .popup-fake {
+            background: #C0C0C0;
+            border: 2px outset #FFFFFF;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 400px;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+        }
+        
+        .popup-title {
+            background: #000080;
+            color: #FFFFFF;
+            padding: 5px;
+            margin: -20px -20px 10px -20px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .popup-button {
+            background: linear-gradient(180deg, #C0C0C0 0%, #808080 100%);
+            border: 2px outset #FFFFFF;
+            padding: 5px 20px;
+            margin: 5px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        
+        .popup-button:active {
+            border-style: inset;
+        }
+        
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: 9998;
+            display: none;
+        }
+        
+        .popup-overlay.show {
+            display: block;
+        }
+        
+        .clickable-text {
+            color: #00FFFF;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
+        .not-clickable-button {
+            background: linear-gradient(180deg, #C0C0C0 0%, #808080 100%);
+            border: 3px outset #FFFFFF;
+            padding: 8px 15px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: #999999;
+            display: inline-block;
+            opacity: 0.6;
+        }
+        
+        table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Popup overlay -->
+    <div class="popup-overlay" id="popupOverlay"></div>
+    
+    <!-- Satisfaction Survey Popup -->
+    <div class="satisfaction-popup" id="satisfactionPopup">
+        <div class="popup-title">⚠️ Customer Satisfaction Survey</div>
+        <p style="color: #000000; font-family: Arial, sans-serif; font-size: 12px; margin: 15px 0;">
+            <strong>Are you satisfied with your experience so far?</strong>
+        </p>
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="popup-button" onclick="handleSurvey('yes')">Yes</button>
+            <button class="popup-button" onclick="handleSurvey('no')">No</button>
+            <button class="popup-button" onclick="handleSurvey('maybe')">Maybe</button>
+        </div>
+    </div>
+
+    <script>
+        // Random popup satisfaction survey
+        const surveyMessages = [
+            "Thank you for your feedback! We will use it to make absolutely no changes.",
+            "Your response has been recorded and will be ignored.",
+            "Interesting choice. We didn't actually save that.",
+            "Error: Satisfaction not found. Please try being satisfied.",
+            "Thank you! Your feedback has been filed under 'Maybe Later'.",
+            "We appreciate your honesty, even though we asked at a random time.",
+            "Your satisfaction level: UNCLEAR. Please remain confused.",
+            "Response saved! (Just kidding, we don't have a database)",
+            "Thank you for participating in this mandatory optional survey.",
+            "Your feedback is important to us! (Citation needed)"
+        ];
+        
+        function showSatisfactionPopup() {
+            document.getElementById('popupOverlay').classList.add('show');
+            document.getElementById('satisfactionPopup').classList.add('show');
+        }
+        
+        function hideSatisfactionPopup() {
+            document.getElementById('popupOverlay').classList.remove('show');
+            document.getElementById('satisfactionPopup').classList.remove('show');
+        }
+        
+        function handleSurvey(response) {
+            hideSatisfactionPopup();
+            const message = surveyMessages[Math.floor(Math.random() * surveyMessages.length)];
+            setTimeout(() => {
+                alert(message);
+            }, 300);
+        }
+        
+        // Show popup at random intervals (between 8-25 seconds)
+        function scheduleRandomPopup() {
+            const minTime = 8000;  // 8 seconds
+            const maxTime = 25000; // 25 seconds
+            const randomTime = Math.floor(Math.random() * (maxTime - minTime + 1)) + minTime;
+            
+            setTimeout(() => {
+                showSatisfactionPopup();
+                scheduleRandomPopup(); // Schedule next one
+            }, randomTime);
+        }
+        
+        // Start the random popup cycle
+        scheduleRandomPopup();
+        
+        // Close popup if clicking overlay
+        document.getElementById('popupOverlay').addEventListener('click', hideSatisfactionPopup);
+    </script>
+    
+    <table class="container">
+        <tr>
+            <td class="sidebar">
+                <h4 style="color: #FFFF00; text-align: center;">NAVIGATE</h4>
+                
+                <a href="#main" class="nav-button">🏠 Start Here (Don't)</a>
+                <a href="#main" class="nav-button">❓ The Zone</a>
+                <a href="javascript:void(0)" class="nav-button">🌟 Click This</a>
+                <a href="#testimonials" class="nav-button">💬 What They Said</a>
+                <a href="javascript:alert('You clicked it!')" class="nav-button">⚠️ ??</a>
+                <a href="#main" class="nav-button">🔄 Try Again</a>
+                <a href="#footer" class="nav-button">📧 Contact (Broken)</a>
+                
+                <div style="margin-top: 30px; text-align: center;">
+                    <img src="data:image/gif;base64,R0lGODlhFAAUAKEAAP/zAP8AAP///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgADACwAAAAAFAAUAAACQZyPqcvtD6OctNqLs968+w+G4kiW5omm6sq27gvH8kzX9o3n+s73/g8MCofEovGITCqXzKbzCY1Kp9Sq9YrNbgkAOw==" alt="spinning globe" width="40" style="animation: spin 2s linear infinite;">
+                    <style>
+                        @keyframes spin {
+                            from { transform: rotate(0deg); }
+                            to { transform: rotate(360deg); }
+                        }
+                    </style>
+                </div>
+                
+                <div class="counter" style="margin-top: 20px; font-size: 10px;">
+                    👁️ Visitors: 0000042
+                </div>
+                
+                <p style="font-size: 9px; color: #FFFF00; margin-top: 20px;">
+                    <span class="blink">⚠️ UNDER CONSTRUCTION ⚠️</span>
+                </p>
+            </td>
+            
+            <td class="main-content" id="main">
+                <h1>WELCOME TO THE DIGITAL EXPERIENCE</h1>
+                
+                <div style="position: relative;">
+                    <img src="data:image/gif;base64,R0lGODlhFAAUAKEAAP/zAP8AAP///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgADACwAAAAAFAAUAAACQZyPqcvtD6OctNqLs968+w+G4kiW5omm6sq27gvH8kzX9o3n+s73/g8MCofEovGITCqXzKbzCY1Kp9Sq9YrNbgkAOw==" alt="NEW!" width="60" style="position: absolute; top: -20px; right: 50px; animation: spin 3s linear infinite;">
+                </div>
+                
+                <h3 style="text-align: center;">Where Everything Happens... Eventually</h3>
+                
+                <p style="position: relative; left: 100px; color: #FF00FF; font-size: 10px; transform: rotate(-5deg);">
+                    ← Look at this text just hanging out over here
+                </p>
+                
+                <div class="marquee">
+                    <div class="marquee-text">
+                        🔥🔥🔥 NEW UPDATES COMING SOON 🔥🔥🔥 BEST VIEWED IN NETSCAPE NAVIGATOR 4.0 🔥🔥🔥 OPTIMIZED FOR 800x600 RESOLUTION 🔥🔥🔥 WEBMASTER@DEFINITELY-NOT-A-REAL-EMAIL.BIZ 🔥🔥🔥
+                    </div>
+                </div>
+                
+                <div class="popup-fake">
+                    <div class="popup-title">⚠️ System Message</div>
+                    <p style="color: #000000; font-family: Arial, sans-serif; font-size: 12px;">
+                        Sorry for the pop-up! We know you hate these. We hate them too. But here we are.
+                    </p>
+                    <div style="text-align: right;">
+                        <span class="not-clickable-button">OK</span>
+                    </div>
+                </div>
+                
+                <div class="content-box tilted-section">
+                    <h2>🌟 Revolutionary Solutions For Tomorrow's Yesterday</h2>
+                    <h4 style="color: #FF69B4; font-size: 16px;">*Results may not occur</h4>
+                    
+                    <p style="font-family: 'Georgia', serif; color: #FFFFFF; line-height: 1.8;">
+                        In today's fast-paced world of quantum synergies and blockchain pizzas, we stand at the precipice of something. What is that something? Well, that's the question, isn't it. Our platform leverages cutting-edge technology to deliver unprecedented value through innovative disruption of traditional paradigms in the space where baseball statistics meet spiritual awakening. We're not just another company selling things - we're a movement. A philosophy. A way of being that transcends the mundane reality of actually doing anything specific.
+                    </p>
+                    
+                    <p style="font-family: 'Verdana', sans-serif; color: #00FF00;">
+                        Founded in <span class="clickable-text" onclick="alert('Why did you click this?')">nineteen ninety-something</span>, our team of experts who definitely exist have been working tirelessly to maybe create solutions that could potentially address problems we're fairly confident are real. With over twelve seconds of combined experience in various fields including astrology, stock market prediction, and lasagna optimization, we bring a unique perspective to... you know... stuff.
+                    </p>
+                    
+                    <div style="position: relative; margin: 20px 0;">
+                        <img src="data:image/gif;base64,R0lGODlhZABkAPAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAAACwAAAAAZABkAEAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAA7" alt="random gif" width="40" style="position: absolute; right: 20px; top: -30px;">
+                        <p style="color: #FFD700; font-size: 11px; text-align: right; transform: rotate(3deg);">
+                            ← What is this doing here?
+                        </p>
+                    </div>
+                    
+                    <div class="gif-container">
+                        <img src="data:image/gif;base64,R0lGODlhZABkAPAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAAACwAAAAAZABkAEAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAA7" alt="rotating construction sign" width="50">
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <p style="position: relative; left: -30px; color: #FF1493; font-size: 9px; transform: rotate(-8deg); margin: 10px 0;">
+                    ✨ This text is just vibing at an angle ✨
+                </p>
+                
+                <div class="content-box tilted-other-way">
+                    <h2>📊 Why Choose Us?</h2>
+                    <h4 style="color: #90EE90;">Because you're already here</h4>
+                    
+                    <p style="font-family: 'Trebuchet MS', sans-serif; color: #FFB6C1;">
+                        Have you ever wondered what it would be like if meditation could predict stock market trends? What if I told you that our proprietary algorithm combines the ancient wisdom of crystal energy with modern machine learning to create a synergy that is both profound and also words that sound impressive. We don't just think outside the box - we question whether the box ever existed in the first place, metaphysically speaking, in terms of ROI and quarterly earnings from pizza-related cryptocurrency ventures.
+                    </p>
+                    
+                    <p style="font-family: 'Arial Black', sans-serif; color: #DDA0DD;">
+                        Our team includes: people. Multiple people. They have skills. Some of those skills might even be relevant. We can't say for sure because
+                    </p>
+                    
+                    <div style="text-align: center; margin: 30px 0;">
+                        <span class="blink" style="color: #FF0000; font-size: 24px;">✨ SCROLL FOR MORE ✨</span>
+                    </div>
+                </div>
+                
+                <hr style="background: linear-gradient(90deg, transparent, #00FF00, transparent);">
+                
+                <div class="content-box way-off" id="testimonials">
+                    <h2>📢 Reviews (Unverified)</h2>
+                    <h4 style="color: #FF6347;">What People Unfortunately Said</h4>
+                    
+                    <div class="testimonial" style="transform: rotate(-2deg); margin-left: 20px;">
+                        <div class="star-rating">⭐ (1 out of 10)</div>
+                        <p><strong>Marcus T.</strong></p>
+                        <p style="font-style: italic;">"I'm not entirely sure what I just looked at. I came here looking for tax software and somehow ended up reading about astrology and lasagna. My eyes hurt. The colors... why so many colors? I have questions but I'm afraid of the answers. 2/10 would not recommend to my enemies."</p>
+                    </div>
+                    
+                    <div class="testimonial" style="transform: rotate(1.5deg); margin-right: -10px;">
+                        <div class="star-rating">★★☆☆☆☆☆☆☆☆</div>
+                        <p><strong>Jennifer K.</strong></p>
+                        <p style="font-style: italic;">"This website gave me a headache and also made me question my life choices. Why did I click six different buttons that all did the same thing? Why is there a construction sign gif? It's 2026. I feel like I've time-traveled but to a bad timeline. At least the marquee text was... functional? I guess?"</p>
+                    </div>
+                    
+                    <div class="testimonial" style="transform: rotate(-1deg); margin-left: 40px;">
+                        <div class="star-rating">⭐⭐ (2 stars but not the good kind)</div>
+                        <p><strong>Robert "Big Bob" Henderson</strong></p>
+                        <p style="font-style: italic;">"Best pizza I've ever had. Hot and fresh, delivered in 25 minutes. Would order again! Five stars!"</p>
+                        <p style="font-size: 10px; color: #666;">[Editor's note: We don't sell pizza]</p>
+                    </div>
+                    
+                    <div class="testimonial" style="transform: rotate(2deg); margin-left: -20px;">
+                        <div class="star-rating">? out of 5</div>
+                        <p><strong>Anonymous User #847</strong></p>
+                        <p style="font-style: italic;">"I think this broke my browser? Every link just sent me in circles. I clicked 'Contact Us' and it scrolled to the footer which has a broken email link. I feel like I'm in a maze designed by someone who hates me personally. Is this a social experiment? Am I being studied? Help."</p>
+                    </div>
+                    
+                    <div class="testimonial" style="transform: rotate(-2.5deg); margin-right: 30px;">
+                        <div class="star-rating">★ (one star because zero isn't an option)</div>
+                        <p><strong>Dr. Patricia Millhouse, PhD</strong></p>
+                        <p style="font-style: italic;">"As a professor of web design and user experience, I showed this to my students as an example of what NOT to do. They laughed. Then they cried. Then we all stared in silence at the blinking text. I haven't slept well since. The Comic Sans haunts my dreams."</p>
+                    </div>
+                </div>
+                
+                <hr style="background: linear-gradient(90deg, transparent, #FF69B4, transparent);">
+                
+                <img src="data:image/gif;base64,R0lGODlhFAAUAKEAAP/zAP8AAP///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgADACwAAAAAFAAUAAACQZyPqcvtD6OctNqLs968+w+G4kiW5omm6sq27gvH8kzX9o3n+s73/g8MCofEovGITCqXzKbzCY1Kp9Sq9YrNbgkAOw==" alt="floating star" width="30" style="position: relative; left: 80%; animation: spin 4s linear infinite; margin: -10px 0;">
+                
+                <div class="content-box tilted-section">
+                    <h2>❓ Frequently Asked Questions</h2>
+                    <h4 style="color: #87CEEB;">We have answers!</h4>
+                    
+                    <h3 style="font-size: 18px; color: #FFD700;">Q: What exactly do you do?</h3>
+                    <p style="color: #98FB98; font-family: 'Times New Roman', serif;">
+                        A: That's a great question! We're so glad you asked. The answer is complex and multifaceted, involving various stakeholders across multiple industries including but not limited to technology, finance, spirituality, and Italian cuisine. Simply put, we provide solutions.
+                    </p>
+                    
+                    <h3 style="font-size: 18px; color: #FFD700;">Q: How much does it cost?</h3>
+                    <p style="color: #98FB98; font-family: 'Times New Roman', serif;">
+                        A: Yes.
+                    </p>
+                    
+                    <h3 style="font-size: 18px; color: #FFD700;">Q: Is this website serious?</h3>
+                    <p style="color: #98FB98; font-family: 'Times New Roman', serif;">
+                        A: We take pride in our commitment to excellence and delivering value to customers worldwide through innovative synergies.
+                    </p>
+                    
+                    <h3 style="font-size: 18px; color: #FFD700;">Q: Why can't I find a working contact form?</h3>
+                    <p style="color: #98FB98; font-family: 'Times New Roman', serif;">
+                        A: Baseball statistics show that mercury is in retrograde, which affects our quarterly projections for blockchain-based meditation apps. We hope this answers your question about our pizza delivery times.
+                    </p>
+                </div>
+                
+                <div style="text-align: center; margin: 50px 0; transform: rotate(-0.5deg);">
+                    <h2 style="color: #FF1493; font-family: 'Impact', fantasy;">READY TO BEGIN YOUR JOURNEY?</h2>
+                    
+                    <div style="transform: rotate(1deg);">
+                        <a href="#main" class="cta-button">LEARN MORE</a>
+                    </div>
+                    <div style="transform: rotate(-2deg); margin-top: -5px;">
+                        <a href="javascript:void(0)" class="cta-button" onclick="alert('This feature is coming soon! (Maybe)')">BEGIN</a>
+                    </div>
+                    <div style="transform: rotate(1.5deg); margin-top: -5px;">
+                        <a href="#testimonials" class="cta-button">ENTER</a>
+                    </div>
+                    <div style="display: inline-block; transform: rotate(-1deg);">
+                        <span class="not-clickable-button" style="font-size: 20px; padding: 15px 30px; margin: 10px;">DO NOT PRESS</span>
+                    </div>
+                </div>
+                
+                <div class="gif-container">
+                    <img src="data:image/gif;base64,R0lGODlhZABkAPAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAAACwAAAAAZABkAEAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAAh+QQFCgAAACwAAAAAZABkAAAI/wABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFixgzatzIsaPHjyBDihxJsqTJkyhTqlzJsqXLlzBjypxJs6bNmzhz6tzJs6fPn0CDCh1KtKjRo0iTKl3KtKnTp1CjSp1KtarVq1izat3KtavXr2DDih1LtqzZs2jTql3Ltq3bt3Djyp1Lt67du3jz6t3Lt6/fv4ADCx5MuLDhw4gTK17MuLHjx5AjS55MubLly5gza97MubPnz6BDix5NurTp06hTq17NurXr17Bjy55Nu7bt27hz697Nu7fv38CDCx9OvLjx48iTK1/OvLnz59CjS59Ovbr169iza9/Ovbv37+DDix9Pvrz58+jTq1/Pvr379/Djy59Pv779+/jz69/Pv7///wAGKOCABBZo4IEIJqjgggw26OCDEEYo4YQUVmjhhRhmqOGGHHbo4YcghijiiCSWaOKJKKao4oostujiizDGKOOMNNZo44045qjjjjz26OOPQAYp5JBEFmnkkUgmqeSSTDbp5JNQRinllFRWaeWVWGap5ZZcdunll2CGKeaYZJZp5plopqnmmmy26eabcMYp55x01mnnnXjmqeeefPbp55+ABirooIQWauihiCaq6KKMNuroo5BGKumklFZq6aWYZqrpppx26umnoIYq6qiklmnqAAA7" alt="flame divider" width="100">
+                </div>
+                
+                <div class="footer" id="footer">
+                    <p style="text-align: center; color: #FFD700; font-family: 'Impact', fantasy; font-size: 14px;">
+                        THE DIGITAL EXPERIENCE :: PORTAL TO SOLUTIONS
+                    </p>
+                    
+                    <p style="text-align: center; margin: 20px 0;">
+                        <a href="javascript:void(0)">Privacy Policy</a> | 
+                        <a href="javascript:void(0)">Terms of Service</a> | 
+                        <a href="javascript:void(0)">Webmaster</a> | 
+                        <a href="#main">Back to Top (Maybe)</a>
+                    </p>
+                    
+                    <p style="text-align: center; font-size: 9px;">
+                        © 1996-2026 Me I Guess • All Rights Probably Reserved
+                    </p>
+                    
+                    <p style="text-align: center; font-size: 8px; color: #808080;">
+                        Last Updated: February 14, 1999 at 3:47 PM EST
+                    </p>
+                    
+                    <p style="text-align: center; margin-top: 20px;">
+                        <img src="data:image/gif;base64,R0lGODlhFAAUAKEAAP/zAP8AAP///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgADACwAAAAAFAAUAAACQZyPqcvtD6OctNqLs968+w+G4kiW5omm6sq27gvH8kzX9o3n+s73/g8MCofEovGITCqXzKbzCY1Kp9Sq9YrNbgkAOw==" alt="NEW!" width="40">
+                    </p>
+                    
+                    <p style="text-align: center; font-size: 8px; margin-top: 15px; color: #00FF00;">
+                        Best viewed in Netscape Navigator 4.0 or Internet Explorer 3.0<br>
+                        Optimized for 800x600 resolution<br>
+                        <span class="blink">⚡ Enhanced for Web 1.0 ⚡</span>
+                    </p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
